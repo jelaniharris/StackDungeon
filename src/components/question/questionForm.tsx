@@ -17,6 +17,9 @@ const QuestionForm = ({
   onResult,
 }: QuestionFormParams) => {
   const [style, setStyle] = useState({});
+  const [selectedAnswer, setSelectAnswer] = useState<number | null>(null);
+  const [confirmedAnswer, setConfirmedAnswer] = useState(false);
+
   useEffect(() => {
     import('react-syntax-highlighter/dist/esm/styles/hljs').then((mod) =>
       setStyle(mod.default)
@@ -24,11 +27,19 @@ const QuestionForm = ({
   });
 
   const onAnswerSelect = (answerIndex: number) => {
-    if (answerIndex == Number(question.correctAnswer)) {
+    setSelectAnswer(answerIndex);
+  };
+
+  const advanceQuiz = () => {
+    if (selectedAnswer == Number(question.correctAnswer)) {
       onResult(true);
     } else {
       onResult(false);
     }
+  };
+
+  const onSubmitAnswer = () => {
+    setConfirmedAnswer(true);
   };
 
   const QuestionContent = ({ content }: { content: string }) => {
@@ -55,8 +66,31 @@ const QuestionForm = ({
       <QuestionContent content={question.content || ''} />
 
       {question.answers && (
-        <QuestionAnswers question={question} onAnswerSelect={onAnswerSelect} />
+        <QuestionAnswers
+          selectedAnswer={selectedAnswer}
+          question={question}
+          onAnswerSelect={onAnswerSelect}
+          confirmedAnswer={confirmedAnswer}
+        />
       )}
+      <div className='mt-5 flex flex-row items-center justify-around gap-3'>
+        {!confirmedAnswer && (
+          <button
+            className='rounded-md bg-primary-700 p-3 text-white'
+            onClick={onSubmitAnswer}
+          >
+            Submit Answer
+          </button>
+        )}
+        {confirmedAnswer && (
+          <button
+            className='rounded-md bg-primary-700 p-3 text-white'
+            onClick={advanceQuiz}
+          >
+            Next Question
+          </button>
+        )}
+      </div>
     </div>
   );
 };

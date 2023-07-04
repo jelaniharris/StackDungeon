@@ -28,6 +28,7 @@ export const ShowAssessmentFloors = ({ title }: ShowAssessmentFloorsParams) => {
     const newDungeonData: Dungeon[] = [];
 
     const domains = character.domains;
+    const numQuestions = 3;
 
     // Generating one dungeon per domain
     domains.forEach((domain) => {
@@ -36,7 +37,7 @@ export const ShowAssessmentFloors = ({ title }: ShowAssessmentFloorsParams) => {
         name: `Assessment ${domainData?.name}`,
         hasTimer: true,
         difficulty: 0,
-        numberOfQuestions: 10,
+        numberOfQuestions: numQuestions,
         timePerQuestion: 90,
         difficultyReasons: [],
         domains: [domain],
@@ -49,7 +50,7 @@ export const ShowAssessmentFloors = ({ title }: ShowAssessmentFloorsParams) => {
         name: `Assessment All`,
         hasTimer: true,
         difficulty: 0,
-        numberOfQuestions: 10,
+        numberOfQuestions: numQuestions,
         timePerQuestion: 90,
         difficultyReasons: [],
         domains: domains,

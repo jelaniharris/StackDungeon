@@ -6,11 +6,11 @@ import { TypedUseSelectorHook, useSelector } from 'react-redux';
 import characterReducer from '@/store/Features/character/CharacterSlice';
 import dungeonReducer from '@/store/Features/dungeon/DungeonSlice';
 import questReducer from '@/store/Features/quest/QuestSlice';
-import questionReducer from '@/store/Features/question/questionSlice';
+import quizReducer from '@/store/Features/quiz/quizSlice';
 
 export const store = configureStore({
   reducer: {
-    questions: questionReducer,
+    quiz: quizReducer,
     quest: questReducer,
     dungeon: dungeonReducer,
     character: characterReducer,

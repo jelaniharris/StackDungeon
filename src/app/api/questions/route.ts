@@ -10,7 +10,7 @@ export async function GET(request: NextRequest) {
 
   const parsedJSON = querystring.parse(querySearchParams.toString());
 
-  const { domains } = parsedJSON;
+  const { domains, numberOfQuestions } = parsedJSON;
 
   console.log('querySearchParams are: ', querySearchParams);
   console.log('parsed json ', parsedJSON);
@@ -40,7 +40,12 @@ export async function GET(request: NextRequest) {
     const questionSet = await Question.aggregate([
       match,
       {
-        $sample: { size: 10 },
+        $sample: {
+          size:
+            numberOfQuestions && !Array.isArray(numberOfQuestions)
+              ? parseInt(numberOfQuestions, 10)
+              : 10,
+        },
       },
     ]);
 

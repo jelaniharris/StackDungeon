@@ -1,101 +1,106 @@
 'use client';
 
-import React, { useCallback, useEffect, useState } from 'react';
+import { useSearchParams } from 'next/navigation';
+import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 
 import Layout from '@/components/layout/Layout';
 import AnswerSet from '@/components/question/answerset';
-import QuestionForm from '@/components/question/questionForm';
+import DisplayQuestion from '@/components/question/DisplayQuestion';
+import QuizResults from '@/components/question/QuizResults';
 
 import { useAppSelector } from '@/store';
+import { quizAction } from '@/store/Features/quiz/quizSlice';
 
 import { getQuestions } from '@/app/lib/QuestionData';
-import { GetQuestions, QuestionType } from '@/schema/question.schema';
-
-type DisplayQuestionParams = {
-  question: QuestionType;
-  questionNumber: number;
-};
 
 const Quiz = () => {
-  const [data, setData] = useState<GetQuestions | null>();
   const [isLoading, setLoading] = useState(false);
-  const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [answerSet, setAnswerSet] = useState<Array<boolean | null>>([]);
 
-  const [dungeon] = useAppSelector((state) => [state.dungeon]);
+  const [dungeon, quiz] = useAppSelector((state) => [
+    state.dungeon,
+    state.quiz,
+  ]);
+  const dispatch = useDispatch();
 
-  /*const pageSearchParams = useSearchParams();
+  const pageSearchParams = useSearchParams();
   const desiredDomain = pageSearchParams
     ? pageSearchParams.get('domain') || ''
-    : '';*/
-
-  const loadQuestions = useCallback(async () => {
-    if (data || isLoading) {
-      return;
-    }
-
-    if (!dungeon) {
-      console.error('Could not find current dungeon');
-    }
-
-    setLoading(true);
-
-    const questionData = await getQuestions({
-      domains: dungeon.dungeon.domains,
-    });
-
-    // Assign the data loaded
-    setData(questionData);
-    // Reset the answer set
-    const emptyAnswers: Array<boolean | null> = [];
-    for (let k = 0; k < questionData.questions.length; k++) {
-      emptyAnswers.push(null);
-    }
-    setAnswerSet(emptyAnswers);
-    setLoading(false);
-  }, [data, dungeon, isLoading]);
+    : '';
+  const desiredNumberOfQuestions = pageSearchParams
+    ? parseInt(pageSearchParams.get('numberOfQuestions') || '', 10) || ''
+    : 3;
 
   useEffect(() => {
     console.log('Loading Questions');
-    loadQuestions();
-  }, [loadQuestions]);
+    const loadQuestions = async () => {
+      if (!dungeon) {
+        console.error('Could not find current dungeon');
+      }
 
-  const onResult = (result: boolean) => {
-    const answers = answerSet;
-    if (answers) {
-      answers[currentQuestion] = result;
-      setAnswerSet(answers);
-      setCurrentQuestion(currentQuestion + 1);
+      // Set as loading
+      setLoading(true);
+
+      console.log('Actually getting data ...');
+
+      const questionData = await getQuestions({
+        domains: [desiredDomain] || dungeon.dungeon.domains,
+        numberOfQuestions:
+          desiredNumberOfQuestions || dungeon.dungeon.numberOfQuestions,
+      });
+
+      // Assign the data loaded
+      dispatch(quizAction.setQuestions(questionData));
+
+      // Reset the answer set
+      dispatch(quizAction.resetAnswerSet());
+
+      // Set as no longer loading
+      setLoading(false);
+    };
+
+    if (quiz.questions.length == 0 && !isLoading) {
+      loadQuestions();
     }
-  };
+  }, [
+    desiredDomain,
+    desiredNumberOfQuestions,
+    dispatch,
+    dungeon,
+    isLoading,
+    quiz.questions.length,
+  ]);
 
-  const DisplayQuestion = ({
-    question,
-    questionNumber,
-  }: DisplayQuestionParams) => {
+  if (isLoading)
     return (
-      <QuestionForm
-        key={question.id}
-        onResult={onResult}
-        question={question}
-        questionNumber={questionNumber}
-      />
+      <Layout>
+        <p>Loading Questions...</p>
+      </Layout>
     );
-  };
-
-  if (isLoading) return <p>Loading...</p>;
-  if (!data) return <p>No question data?</p>;
+  if (!quiz.questions || quiz.questions.length === 0)
+    return <p>No question data?</p>;
 
   return (
     <Layout>
       <div className='flex h-screen flex-col items-center justify-center'>
-        {data && data.questions && (
+        {quiz.reviewMode && (
+          <>
+            <QuizResults
+              questions={quiz.questions}
+              answerSet={quiz.answerSet}
+            />
+          </>
+        )}
+        {quiz && quiz.questions && !quiz.reviewMode && (
           <DisplayQuestion
-            question={data.questions[currentQuestion]}
-            questionNumber={currentQuestion}
+            question={quiz.questions[quiz.currentQuestion]}
+            questionNumber={quiz.currentQuestion}
           />
         )}
-        <AnswerSet currentQuestion={currentQuestion} answerSet={answerSet} />
+        <AnswerSet
+          currentQuestion={quiz.currentQuestion}
+          answerSet={quiz.answerSet}
+        />
       </div>
     </Layout>
   );
