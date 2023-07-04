@@ -1,6 +1,15 @@
-import * as React from 'react';
+import React from 'react';
 
-export default function Layout({ children }: { children: React.ReactNode }) {
-  // Put Header or Footer Here
-  return <>{children}</>;
-}
+type LayoutProps = {
+  children: React.ReactNode;
+};
+
+const Layout = ({ children }: LayoutProps) => {
+  return (
+    <>
+      <main className='container mx-auto px-4 py-2'>{children}</main>
+    </>
+  );
+};
+
+export default Layout;

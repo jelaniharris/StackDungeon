@@ -9,7 +9,7 @@ export default {
         primary: ['Inter', ...defaultTheme.fontFamily.sans],
       },
       colors: {
-        primary: {
+        primary_old: {
           // Customize it on globals.css :root
           50: 'rgb(var(--tw-color-primary-50) / <alpha-value>)',
           100: 'rgb(var(--tw-color-primary-100) / <alpha-value>)',
@@ -24,6 +24,47 @@ export default {
           950: 'rgb(var(--tw-color-primary-950) / <alpha-value>)',
         },
         dark: '#222222',
+        primary: {
+          '50': '#f3faf9',
+          '100': '#d8efee',
+          '200': '#b1dedd',
+          '300': '#82c5c6',
+          '400': '#58a5a9',
+          '500': '#3e898e',
+          '600': '#306b71',
+          '700': '#2b5a5f',
+          '800': '#25464a',
+          '900': '#223c3f',
+          '950': '#0f2124',
+        },
+        accent: {
+          '50': '#f1fafa',
+          '100': '#dcf1f1',
+          '200': '#bde4e4',
+          '300': '#8ed1d2',
+          '400': '#59b4b7',
+          '500': '#3e999c',
+          '600': '#367d84',
+          '700': '#336a71',
+          '800': '#2f555b',
+          '900': '#2b494e',
+          '950': '#182f34',
+        },
+        text: '#091415',
+        background: {
+          '50': '#f4fafb',
+          '100': '#edf6f7',
+          '200': '#cee8e9',
+          '300': '#a2d6d7',
+          '400': '#71bebf',
+          '500': '#4fa8a8',
+          '600': '#3c898d',
+          '700': '#326e72',
+          '800': '#2c5e60',
+          '900': '#294e51',
+          '950': '#1b3336',
+          secondary: '#ffffff',
+        },
       },
       keyframes: {
         flicker: {

@@ -1,0 +1,1099 @@
+[
+  {
+    "question": "",
+    "description": "\n",
+    "answers": [],
+    "correctAnswer": -1,
+    "postAnswerText": null
+  },
+  {
+    "question": "Q1. If you want to import just the Component from the React library, what syntax do you use?",
+    "description": "\n\n",
+    "answers": [
+      "<code>import React.Component from 'react'</code>",
+      "<code>import [ Component ] from 'react'</code>",
+      "<code>import Component from 'react'</code>",
+      "<code>import { Component } from 'react'</code>"
+    ],
+    "correctAnswer": 3,
+    "postAnswerText": null
+  },
+  {
+    "question": "Q2. If a function component should always render the same way given the same props, what is a simple performance optimization available for it?",
+    "description": "\n\n",
+    "answers": [
+      "Wrap it in the <code>React.memo</code> higher-order component.",
+      "Implement the <code>useReducer</code> Hook.",
+      "Implement the <code>useMemo</code> Hook.",
+      "Implement the <code>shouldComponentUpdate</code> lifecycle method."
+    ],
+    "correctAnswer": 0,
+    "postAnswerText": null
+  },
+  {
+    "question": "Q3. How do you fix the syntax error that results from running this code?",
+    "description": "\n<pre><code>const person =(firstName, lastName) =&gt;\n{\n  first: firstName,\n  last: lastName\n}\nconsole.log(person(\"Jill\", \"Wilson\"))\n</code></pre>\n\n",
+    "answers": [
+      "Wrap the object in parentheses.",
+      "Call the function from another file.",
+      "Add a return statement before the first curly brace.",
+      "Replace the object with an array."
+    ],
+    "correctAnswer": 0,
+    "postAnswerText": null
+  },
+  {
+    "question": "Q4. If you see the following import in a file, what is being used for state management in the component?",
+    "description": "\n<p><code>import React, {useState} from 'react';</code></p>\n\n",
+    "answers": [
+      "React Hooks",
+      "stateful components",
+      "math",
+      "class components"
+    ],
+    "correctAnswer": 0,
+    "postAnswerText": null
+  },
+  {
+    "question": "Q5. Using object literal enhancement, you can put values back into an object. When you log person to the console, what is the output?",
+    "description": "\n<pre><code>const name = 'Rachel';\nconst age = 31;\nconst person = { name, age };\nconsole.log(person);\n</code></pre>\n\n",
+    "answers": [
+      "<code>{{name: \"Rachel\", age: 31}}</code>",
+      "<code>{name: \"Rachel\", age: 31}</code>",
+      "<code>{person: \"Rachel\", person: 31}}</code>",
+      "<code>{person: {name: \"Rachel\", age: 31}}</code>"
+    ],
+    "correctAnswer": 1,
+    "postAnswerText": null
+  },
+  {
+    "question": "Q6. What is the testing library most often associated with React?",
+    "description": "\n\n",
+    "answers": ["Mocha", "Chai", "Sinon", "Jest"],
+    "correctAnswer": 3,
+    "postAnswerText": null
+  },
+  {
+    "question": "Q7. To get the first item from the array (\"cooking\") using array destructuring, how do you adjust this line?",
+    "description": "\n<pre><code>const topics = ['cooking', 'art', 'history'];\n</code></pre>\n\n",
+    "answers": [
+      "<code>const first = [\"cooking\", \"art\", \"history\"]</code>",
+      "<code>const [] = [\"cooking\", \"art\", \"history\"]</code>",
+      "<code>const [, first][\"cooking\", \"art\", \"history\"]</code>",
+      "<code>const [first] = [\"cooking\", \"art\", \"history\"]</code>"
+    ],
+    "correctAnswer": 3,
+    "postAnswerText": null
+  },
+  {
+    "question": "Q8. How do you handle passing through the component tree without having to pass props down manually at every level?",
+    "description": "\n\n",
+    "answers": [
+      "React Send",
+      "React Pinpoint",
+      "React Router",
+      "React Context"
+    ],
+    "correctAnswer": 3,
+    "postAnswerText": null
+  },
+  {
+    "question": "Q9. What should the console read when the following code is run?",
+    "description": "\n<pre><code>const [, , animal] = ['Horse', 'Mouse', 'Cat'];\nconsole.log(animal);\n</code></pre>\n\n",
+    "answers": ["Horse", "Cat", "Mouse", "undefined"],
+    "correctAnswer": 1,
+    "postAnswerText": null
+  },
+  {
+    "question": "Q10. What is the name of the tool used to take JSX and turn it into createElement calls?",
+    "description": "\n\n",
+    "answers": ["JSX Editor", "ReactDOM", "Browser Buddy", "Babel"],
+    "correctAnswer": 3,
+    "postAnswerText": null
+  },
+  {
+    "question": "Q11. Why might you use useReducer over useState in a React component?",
+    "description": "\n\n",
+    "answers": [
+      "when you want to replace Redux",
+      "when you need to manage more complex state in an app",
+      "when you want to improve performance",
+      "when you want to break your production app"
+    ],
+    "correctAnswer": 1,
+    "postAnswerText": null
+  },
+  {
+    "question": "Q12. Which props from the props object is available to the component with the following syntax?",
+    "description": "\n<pre><code>&lt;Message {...props} /&gt;\n</code></pre>\n\n",
+    "answers": [
+      "any that have not changed",
+      "all of them",
+      "child props",
+      "any that have changed"
+    ],
+    "correctAnswer": 1,
+    "postAnswerText": null
+  },
+  {
+    "question": "Q13. Consider the following code from React Router. What do you call :id in the path prop?",
+    "description": "\n<pre><code>&lt;Route path=\"/:id\" /&gt;\n</code></pre>\n\n",
+    "answers": [
+      "This is a route modal",
+      "This is a route parameter",
+      "This is a route splitter",
+      "This is a route link"
+    ],
+    "correctAnswer": 1,
+    "postAnswerText": null
+  },
+  {
+    "question": "Q14. If you created a component called Dish and rendered it to the DOM, what type of element would be rendered?",
+    "description": "\n<pre><code>function Dish() {\n  return &lt;h1&gt;Mac and Cheese&lt;/h1&gt;;\n}\n\nReactDOM.render(&lt;Dish /&gt;, document.getElementById('root'));\n</code></pre>\n\n",
+    "answers": ["<code>div</code>", "section", "component", "<code>h1</code>"],
+    "correctAnswer": 3,
+    "postAnswerText": null
+  },
+  {
+    "question": "Q15. What does this React element look like given the following function? (Alternative: Given the following code, what does this React element look like?)",
+    "description": "\n<pre><code>React.createElement('h1', null, \"What's happening?\");\n</code></pre>\n\n",
+    "answers": [
+      "<code>&lt;h1 props={null}&gt;What's happening?&lt;/h1&gt;</code>",
+      "<code>&lt;h1&gt;What's happening?&lt;/h1&gt;</code>",
+      "<code>&lt;h1 id=\"component\"&gt;What's happening?&lt;/h1&gt;</code>",
+      "<code>&lt;h1 id=\"element\"&gt;What's happening?&lt;/h1&gt;</code>"
+    ],
+    "correctAnswer": 1,
+    "postAnswerText": null
+  },
+  {
+    "question": "Q16. What property do you need to add to the Suspense component in order to display a spinner or loading state?",
+    "description": "\n<pre><code>function MyComponent() {\n  return (\n    &lt;Suspense&gt;\n      &lt;div&gt;\n        &lt;Message /&gt;\n      &lt;/div&gt;\n    &lt;/Suspense&gt;\n  );\n}\n</code></pre>\n\n",
+    "answers": ["lazy", "loading", "fallback", "spinner"],
+    "correctAnswer": 2,
+    "postAnswerText": null
+  },
+  {
+    "question": "Q17. What do you call the message wrapped in curly braces below?",
+    "description": "\n<pre><code>const message = 'Hi there';\nconst element = &lt;p&gt;{message}&lt;/p&gt;;\n</code></pre>\n\n",
+    "answers": [
+      "a JS function",
+      "a JS element",
+      "a JS expression",
+      "a JSX wrapper"
+    ],
+    "correctAnswer": 2,
+    "postAnswerText": null
+  },
+  {
+    "question": "Q18. What can you use to handle code splitting?",
+    "description": "\n\n",
+    "answers": [
+      "<code>React.memo</code>",
+      "<code>React.split</code>",
+      "<code>React.lazy</code>",
+      "<code>React.fallback</code>"
+    ],
+    "correctAnswer": 2,
+    "postAnswerText": null
+  },
+  {
+    "question": "Q19. When do you use useLayoutEffect?",
+    "description": "\n\n",
+    "answers": [
+      "to optimize for all devices",
+      "to complete the update",
+      "to change the layout of the screen",
+      "when you need the browser to paint before the effect runs"
+    ],
+    "correctAnswer": 3,
+    "postAnswerText": null
+  },
+  {
+    "question": "Q20. What is the difference between the click behaviors of these two buttons (assuming that this.handleClick is bound correctly)?",
+    "description": "\n<pre><code>A. &lt;button onClick={this.handleClick}&gt;Click Me&lt;/button&gt;\nB. &lt;button onClick={event =&gt; this.handleClick(event)}&gt;Click Me&lt;/button&gt;\n</code></pre>\n\n",
+    "answers": [
+      "Button A will not have access to the event object on click of the button.",
+      "Button B will not fire the handler this.handleClick successfully.",
+      "Button A will not fire the handler this.handleClick successfully.",
+      "There is no difference."
+    ],
+    "correctAnswer": 3,
+    "postAnswerText": null
+  },
+  {
+    "question": "Q21. How do you destructure the properties that are sent to the Dish component?",
+    "description": "\n<pre><code>function Dish(props) {\n  return (\n    &lt;h1&gt;\n      {props.name} {props.cookingTime}\n    &lt;/h1&gt;\n  );\n}\n</code></pre>\n\n",
+    "answers": [
+      "<code>function Dish([name, cookingTime]) { return &lt;h1&gt;{name} {cookingTime}&lt;/h1&gt;; }</code>",
+      "<code>function Dish({name, cookingTime}) { return &lt;h1&gt;{name} {cookingTime}&lt;/h1&gt;; }</code>",
+      "<code>function Dish(props) { return &lt;h1&gt;{name} {cookingTime}&lt;/h1&gt;; }</code>",
+      "<code>function Dish(...props) { return &lt;h1&gt;{name} {cookingTime}&lt;/h1&gt;; }</code>"
+    ],
+    "correctAnswer": 1,
+    "postAnswerText": null
+  },
+  {
+    "question": "Q22. When might you use React.PureComponent?",
+    "description": "\n\n",
+    "answers": [
+      "when you do not want your component to have props",
+      "when you have sibling components that need to be compared",
+      "when you want a default implementation of <code>shouldComponentUpdate()</code>",
+      "when you do not want your component to have state"
+    ],
+    "correctAnswer": 2,
+    "postAnswerText": null
+  },
+  {
+    "question": "Q23. Why is it important to avoid copying the values of props into a component's state where possible?",
+    "description": "\n\n",
+    "answers": [
+      "because you should never mutate state",
+      "because <code>getDerivedStateFromProps()</code> is an unsafe method to use",
+      "because you want to allow a component to update in response to changes in the props",
+      "because you want to allow data to flow back up to the parent"
+    ],
+    "correctAnswer": 2,
+    "postAnswerText": null
+  },
+  {
+    "question": "Q24. What is the children prop?",
+    "description": "\n\n",
+    "answers": [
+      "a property that adds child components to state",
+      "a property that lets you pass components as data to other components",
+      "a property that lets you set an array as a property",
+      "a property that lets you pass data to child elements"
+    ],
+    "correctAnswer": 1,
+    "postAnswerText": null
+  },
+  {
+    "question": "Q25. Which attribute do you use to replace innerHTML in the browser DOM?",
+    "description": "\n\n",
+    "answers": [
+      "injectHTML",
+      "dangerouslySetInnerHTML",
+      "weirdSetInnerHTML",
+      "strangeHTML"
+    ],
+    "correctAnswer": 1,
+    "postAnswerText": null
+  },
+  {
+    "question": "Q26. Which of these terms commonly describe React applications?",
+    "description": "\n\n",
+    "answers": ["declarative", "integrated", "closed", "imperative"],
+    "correctAnswer": 0,
+    "postAnswerText": null
+  },
+  {
+    "question": "Q27. When using webpack, why would you need to use a loader?",
+    "description": "\n\n",
+    "answers": [
+      "to put together physical file folders",
+      "to preprocess files",
+      "to load external data",
+      "to load the website into everyone's phone"
+    ],
+    "correctAnswer": 1,
+    "postAnswerText": null
+  },
+  {
+    "question": "Q28. A representation of a user interface that is kept in memory and is synced with the \"real\" DOM is called what?",
+    "description": "\n\n",
+    "answers": ["virtual DOM", "DOM", "virtual elements", "shadow DOM"],
+    "correctAnswer": 0,
+    "postAnswerText": null
+  },
+  {
+    "question": "Q29. You have written the following code but nothing is rendering. How do you fix this problem?",
+    "description": "\n<pre><code>const Heading = () =&gt; {\n  &lt;h1&gt;Hello!&lt;/h1&gt;;\n};\n</code></pre>\n\n",
+    "answers": [
+      "Add a render function.",
+      "Change the curly braces to parentheses or add a return statement before the <code>h1</code> tag.",
+      "Move the <code>h1</code> to another component.",
+      "Surround the <code>h1</code> in a <code>div</code>."
+    ],
+    "correctAnswer": 1,
+    "postAnswerText": null
+  },
+  {
+    "question": "Q30. To create a constant in JavaScript, which keyword do you use?",
+    "description": "\n\n",
+    "answers": ["const", "let", "constant", "var"],
+    "correctAnswer": 0,
+    "postAnswerText": null
+  },
+  {
+    "question": "Q31. What do you call a React component that catches JavaScript errors anywhere in the child component tree?",
+    "description": "\n\n",
+    "answers": [
+      "error bosses",
+      "error catchers",
+      "error helpers",
+      "error boundaries"
+    ],
+    "correctAnswer": 3,
+    "postAnswerText": null
+  },
+  {
+    "question": "Q32. In which lifecycle method do you make requests for data in a class component?",
+    "description": "\n\n",
+    "answers": [
+      "constructor",
+      "componentDidMount",
+      "componentWillReceiveProps",
+      "componentWillMount"
+    ],
+    "correctAnswer": 1,
+    "postAnswerText": null
+  },
+  {
+    "question": "Q33. React components are composed to create a user interface. How are components composed?",
+    "description": "\n\n",
+    "answers": [
+      "by putting them in the same file",
+      "by nesting components",
+      "with webpack",
+      "with code splitting"
+    ],
+    "correctAnswer": 1,
+    "postAnswerText": null
+  },
+  {
+    "question": "Q34. All React components must act like _ with respect to their props.",
+    "description": "\n\n",
+    "answers": [
+      "monads",
+      "pure functions",
+      "recursive functions",
+      "higher-order functions"
+    ],
+    "correctAnswer": 1,
+    "postAnswerText": null
+  },
+  {
+    "question": "Q35. What is [e.target.id] called in the following code snippet?",
+    "description": "\n<pre><code>handleChange(e) {\n  this.setState({ [e.target.id]: e.target.value })\n}\n</code></pre>\n\n",
+    "answers": [
+      "a computed property name",
+      "a set value",
+      "a dynamic key",
+      "a JSX code string"
+    ],
+    "correctAnswer": 2,
+    "postAnswerText": null
+  },
+  {
+    "question": "Q36. What is the name of this component?",
+    "description": "\n<pre><code>class Clock extends React.Component {\n  render() {\n    return &lt;h1&gt;Look at the time: {time}&lt;/h1&gt;;\n  }\n}\n</code></pre>\n\n",
+    "answers": [
+      "Clock",
+      "It does not have a name prop.",
+      "React.Component",
+      "Component"
+    ],
+    "correctAnswer": 0,
+    "postAnswerText": null
+  },
+  {
+    "question": "Q37. What is sent to an Array.map() function?",
+    "description": "\n\n",
+    "answers": [
+      "a callback function that is called once for each element in the array",
+      "the name of another array to iterate over",
+      "the number of times you want to call the function",
+      "a string describing what the function should do"
+    ],
+    "correctAnswer": 0,
+    "postAnswerText": null
+  },
+  {
+    "question": "Q38. Why is it a good idea to pass a function to setState instead of an object?",
+    "description": "\n\n\n",
+    "answers": [
+      "It provides better encapsulation.",
+      "It makes sure that the object is not mutated.",
+      "It automatically updates a component.",
+      "<code>setState</code> is asynchronous and might result in out of sync values."
+    ],
+    "correctAnswer": 3,
+    "postAnswerText": "<strong>Explanation:</strong> Because <code>this.props</code> and <code>this.state</code> may be updated asynchronously, you should not rely on their values for calculating the next state.\nRead <a href=\"https://medium.com/@wisecobbler/using-a-function-in-setstate-instead-of-an-object-1f5cfd6e55d1\">this article</a>"
+  },
+  {
+    "question": "Q39. What package contains the render() function that renders a React element tree to the DOM?",
+    "description": "\n\n",
+    "answers": [
+      "<code>React</code>",
+      "<code>ReactDOM</code>",
+      "<code>Render</code>",
+      "<code>DOM</code>"
+    ],
+    "correctAnswer": 1,
+    "postAnswerText": null
+  },
+  {
+    "question": "Q40. How do you set a default value for an uncontrolled form field?",
+    "description": "\n\n",
+    "answers": [
+      "Use the <code>value</code> property.",
+      "Use the <code>defaultValue</code> property.",
+      "Use the <code>default</code> property.",
+      "It assigns one automatically."
+    ],
+    "correctAnswer": 1,
+    "postAnswerText": null
+  },
+  {
+    "question": "Q41. What do you need to change about this code to get it to run?",
+    "description": "\n<pre><code>class clock extends React.Component {\n  render() {\n    return &lt;h1&gt;Look at the time: {this.props.time}&lt;/h1&gt;;\n  }\n}\n</code></pre>\n\n\n",
+    "answers": [
+      "Add quotes around the return value",
+      "Remove <code>this</code>",
+      "Remove the render method",
+      "Capitalize <code>clock</code>"
+    ],
+    "correctAnswer": 3,
+    "postAnswerText": "<strong>Explanation:</strong> In JSX, lower-case tag names are considered to be HTML tags.\nRead <a href=\"https://reactjs.org/docs/jsx-in-depth.html#html-tags-vs.-react-components\">this article</a>"
+  },
+  {
+    "question": "Q42. Which Hook could be used to update the document's title?",
+    "description": "\n\n",
+    "answers": [
+      "<code>useEffect(function updateTitle() { document.title = name + ' ' + lastname; });</code>",
+      "<code>useEffect(() =&gt; { title = name + ' ' + lastname; });</code>",
+      "<code>useEffect(function updateTitle() { name + ' ' + lastname; });</code>",
+      "<code>useEffect(function updateTitle() { title = name + ' ' + lastname; });</code>"
+    ],
+    "correctAnswer": 0,
+    "postAnswerText": null
+  },
+  {
+    "question": "Q43. What can you use to wrap Component imports in order to load them lazily?",
+    "description": "\n\n",
+    "answers": [
+      "<code>React.fallback</code>",
+      "<code>React.split</code>",
+      "<code>React.lazy</code>",
+      "<code>React.memo</code>"
+    ],
+    "correctAnswer": 2,
+    "postAnswerText": null
+  },
+  {
+    "question": "Q44. How do you invoke setDone only when component mounts, using hooks?",
+    "description": "\n<pre><code>function MyComponent(props) {\n  const [done, setDone] = useState(false);\n\n  return &lt;h1&gt;Done: {done}&lt;/h1&gt;;\n}\n</code></pre>\n\n",
+    "answers": [
+      "<code>useEffect(() =&gt; { setDone(true); });</code>",
+      "<code>useEffect(() =&gt; { setDone(true); }, []);</code>",
+      "<code>useEffect(() =&gt; { setDone(true); }, [setDone]);</code>",
+      "<code>useEffect(() =&gt; { setDone(true); }, [done, setDone]);</code>"
+    ],
+    "correctAnswer": 1,
+    "postAnswerText": null
+  },
+  {
+    "question": "Q45. Currently, handleClick is being called instead of passed as a reference. How do you fix this?",
+    "description": "\n<pre><code>&lt;button onClick={this.handleClick()}&gt;Click this&lt;/button&gt;\n</code></pre>\n\n",
+    "answers": [
+      "<code>&lt;button onClick={this.handleClick.bind(handleClick)}&gt;Click this&lt;/button&gt;</code>",
+      "<code>&lt;button onClick={handleClick()}&gt;Click this&lt;/button&gt;</code>",
+      "<code>&lt;button onClick={this.handleClick}&gt;Click this&lt;/button&gt;</code>",
+      "<code>&lt;button onclick={this.handleClick}&gt;Click this&lt;/button&gt;</code>"
+    ],
+    "correctAnswer": 2,
+    "postAnswerText": null
+  },
+  {
+    "question": "Q46. Which answer best describes a function component?",
+    "description": "\n\n",
+    "answers": [
+      "A function component is the same as a class component.",
+      "A function component accepts a single props object and returns a React element.",
+      "A function component is the only way to create a component.",
+      "A function component is required to create a React component."
+    ],
+    "correctAnswer": 1,
+    "postAnswerText": null
+  },
+  {
+    "question": "Q47. Which library does the fetch() function come from?",
+    "description": "\n\n",
+    "answers": [
+      "FetchJS",
+      "ReactDOM",
+      "No library. <code>fetch()</code> is supported by most browsers.",
+      "React"
+    ],
+    "correctAnswer": 2,
+    "postAnswerText": null
+  },
+  {
+    "question": "Q48. What will happen when this useEffect Hook is executed, assuming name is not already equal to John?",
+    "description": "\n<pre><code>useEffect(() =&gt; {\n  setName('John');\n}, [name]);\n</code></pre>\n\n",
+    "answers": [
+      "It will cause an error immediately.",
+      "It will execute the code inside the function, but only after waiting to ensure that no other component is accessing the name variable.",
+      "It will update the value of name once and not run again until name is changed from the outside.",
+      "It will cause an infinite loop."
+    ],
+    "correctAnswer": 2,
+    "postAnswerText": null
+  },
+  {
+    "question": "Q49. Which choice will not cause a React component to rerender?",
+    "description": "\n\n",
+    "answers": [
+      "if the component calls <code>this.setState(...)</code>",
+      "the value of one of the component's props changes",
+      "if the component calls <code>this.forceUpdate()</code>",
+      "one of the component's siblings rerenders"
+    ],
+    "correctAnswer": 3,
+    "postAnswerText": null
+  },
+  {
+    "question": "Q50. You have created a new method in a class component called handleClick, but it is not working. Which code is missing?",
+    "description": "\n<pre><code>class Button extends React.Component{\n\n  constructor(props) {\n    super(props);\n    // Missing line\n  }\n\n  handleClick() {...}\n}\n</code></pre>\n\n",
+    "answers": [
+      "<code>this.handleClick.bind(this);</code>",
+      "<code>props.bind(handleClick);</code>",
+      "<code>this.handleClick.bind();</code>",
+      "<code>this.handleClick = this.handleClick.bind(this);</code>"
+    ],
+    "correctAnswer": 3,
+    "postAnswerText": null
+  },
+  {
+    "question": "Q51. React does not render two sibling elements unless they are wrapped in a fragment. Below is one way to render a fragment. What is the shorthand for this?",
+    "description": "\n<pre><code>&lt;React.Fragment&gt;\n  &lt;h1&gt;Our Staff&lt;/h1&gt;\n  &lt;p&gt;Our staff is available 9-5 to answer your questions&lt;/p&gt;\n&lt;/React.Fragment&gt;\n</code></pre>\n\n\n\n\n\n\n\n\n",
+    "answers": ["A", "B", "C", "D"],
+    "correctAnswer": 2,
+    "postAnswerText": "<code>&lt;...&gt;\n  &lt;h1&gt;Our Staff&lt;/h1&gt;\n  &lt;p&gt;Our staff is available 9-5 to answer your questions&lt;/p&gt;\n&lt;/...&gt;\n</code>"
+  },
+  {
+    "question": "Q52. If you wanted to display the count state value in the component, what do you need to add to the curly braces in the h1?",
+    "description": "\n<pre><code>class Ticker extends React.component {\n  constructor(props) {\n    super(props);\n    this.state = { count: 0 };\n  }\n  render() {\n    return &lt;h1&gt;{}&lt;/h1&gt;;\n  }\n}\n</code></pre>\n\n",
+    "answers": ["this.state.count", "count", "state", "state.count"],
+    "correctAnswer": 0,
+    "postAnswerText": null
+  },
+  {
+    "question": "Q53. Per the following code, when is the Hello component displayed?",
+    "description": "\n<pre><code>const greeting = isLoggedIn ? &lt;Hello /&gt; : null;\n</code></pre>\n\n",
+    "answers": [
+      "never",
+      "when <code>isLoggedIn</code> is true",
+      "when a user logs in",
+      "when the Hello function is called"
+    ],
+    "correctAnswer": 1,
+    "postAnswerText": null
+  },
+  {
+    "question": "Q54. In the following code block, what type is orderNumber?",
+    "description": "\n<pre><code>ReactDOM.render(&lt;Message orderNumber=\"16\" /&gt;, document.getElementById('root'));\n</code></pre>\n\n",
+    "answers": ["string", "boolean", "object", "number"],
+    "correctAnswer": 0,
+    "postAnswerText": null
+  },
+  {
+    "question": "Q55. You have added a style property to the h1 but there is an unexpected token error when it runs. How do you fix this?",
+    "description": "\n<pre><code>const element = &lt;h1 style={ backgroundColor: \"blue\" }&gt;Hi&lt;/h1&gt;;\n</code></pre>\n\n",
+    "answers": [
+      "<code>const element = &lt;h1 style=\"backgroundColor: \"blue\"\"}&gt;Hi&lt;/h1&gt;;</code>",
+      "<code>const element = &lt;h1 style={{backgroundColor: \"blue\"}}&gt;Hi&lt;/h1&gt;;</code>",
+      "<code>const element = &lt;h1 style={blue}&gt;Hi&lt;/h1&gt;;</code>",
+      "<code>const element = &lt;h1 style=\"blue\"&gt;Hi&lt;/h1&gt;;</code>"
+    ],
+    "correctAnswer": 1,
+    "postAnswerText": null
+  },
+  {
+    "question": "Q56. Which function is used to update state variables in a React class component?",
+    "description": "\n\n",
+    "answers": [
+      "<code>replaceState</code>",
+      "<code>refreshState</code>",
+      "<code>updateState</code>",
+      "<code>setState</code>"
+    ],
+    "correctAnswer": 3,
+    "postAnswerText": null
+  },
+  {
+    "question": "Q57. Consider the following component. What is the default color for the star?",
+    "description": "\n<pre><code>const Star = ({ selected = false }) =&gt; &lt;Icon color={selected ? 'red' : 'grey'} /&gt;;\n</code></pre>\n\n",
+    "answers": ["black", "red", "grey", "white"],
+    "correctAnswer": 2,
+    "postAnswerText": null
+  },
+  {
+    "question": "Q58. What is the difference between the click behaviors of these two buttons(assuming that this.handleClick is bound correctly)",
+    "description": "\n<pre><code>  A. &lt;button onClick=this.handleClick&gt;Click Me&lt;/button&gt;\n  B. &lt;button onClick={event =&gt; this.handleClick(event)}&gt;Click Me&lt;/button&gt;\n</code></pre>\n\n",
+    "answers": [
+      "<code>Button A will not have access to the event object on click of the button</code>",
+      "<code>Button A will not fire the handler this.handleClick successfully</code>",
+      "<code>There is no difference</code>",
+      "<code>Button B will not fire the handler this.handleClick successfully</code>"
+    ],
+    "correctAnswer": 1,
+    "postAnswerText": null
+  },
+  {
+    "question": "Q59. How would you add to this code, from React Router, to display a component called About?",
+    "description": "\n<pre><code>&lt;Route path=\"/:id\" /&gt;\n</code></pre>\n\n\n\n\n\n\n\n\n",
+    "answers": ["A", "B", "C", "D"],
+    "correctAnswer": 0,
+    "postAnswerText": "<code>&lt;Route path=\"/:id\"&gt;\n  {' '}\n  &lt;About /&gt;\n&lt;/Route&gt;\n</code>"
+  },
+  {
+    "question": "Q60. Which class-based component is equivalent to this function component?",
+    "description": "\n<pre><code>const Greeting = ({ name }) =&gt; &lt;h1&gt;Hello {name}!&lt;/h1&gt;;\n</code></pre>\n\n\n\n\n\n\n\n\n",
+    "answers": ["A", "B", "C", "D"],
+    "correctAnswer": 2,
+    "postAnswerText": "<code>class Greeting extends React.Component {\n  constructor() {\n    return &lt;h1&gt;Hello {this.props.name}!&lt;/h1&gt;;\n  }\n}\n</code>"
+  },
+  {
+    "question": "Q61. Give the code below, what does the second argument that is sent to the render function describe?",
+    "description": "\n<pre><code>ReactDOM.render(\n  &lt;h1&gt;Hi&lt;h1&gt;,\n    document.getElementById('root')\n)\n</code></pre>\n\n",
+    "answers": [
+      "where the React element should be added to the DOM",
+      "where to call the function",
+      "where the root component is",
+      "where to create a new JavaScript file"
+    ],
+    "correctAnswer": 0,
+    "postAnswerText": null
+  },
+  {
+    "question": "Q62. Why should you use React Router's Link component instead of a basic <a> tag in React?",
+    "description": "\n\n",
+    "answers": [
+      "The link component allows the user to use the browser's <code>Back</code> button.",
+      "There is no difference--the <code>Link</code> component is just another name for the <code>&lt;a&gt;</code> tag.",
+      "The <code>&lt;a&gt;</code> tag will cause an error when used in React.",
+      "The <code>&lt;a&gt;</code> tag triggers a full page reload, while the <code>Link</code> component does not."
+    ],
+    "correctAnswer": 3,
+    "postAnswerText": null
+  },
+  {
+    "question": "Q63. What is the first argument, x, that is sent to the createElement function?",
+    "description": "\n<pre><code>React.createElement(x, y, z);\n</code></pre>\n\n",
+    "answers": [
+      "the element that should be created",
+      "the order in which this element should be placed on the page",
+      "the properties of the element",
+      "data that should be displayed in the element"
+    ],
+    "correctAnswer": 0,
+    "postAnswerText": null
+  },
+  {
+    "question": "Q64. Which class-based lifecycle method would be called at the same time as this effect Hook?",
+    "description": "\n<pre><code>useEffect(() =&gt; {\n  // do things\n}, []);\n</code></pre>\n\n",
+    "answers": [
+      "componentWillUnmount",
+      "componentDidMount",
+      "render",
+      "componentDidUpdate"
+    ],
+    "correctAnswer": 1,
+    "postAnswerText": null
+  },
+  {
+    "question": "Q65. What is the name of this component?",
+    "description": "\n<pre><code>class Comp extends React.Component {\n  render() {\n    return &lt;h1&gt;Look at the time: {time}&lt;/h1&gt;;\n  }\n}\n</code></pre>\n\n\n",
+    "answers": ["Comp", "h1", "React.Component", "Component"],
+    "correctAnswer": 0,
+    "postAnswerText": "This question might be an updated version of Q37."
+  },
+  {
+    "question": "Q66. When using a portal, what is the first argument?",
+    "description": "\n<pre><code>ReactDOM.createPortal(x, y);\n</code></pre>\n\n\n",
+    "answers": [
+      "the current state",
+      "the element to render",
+      "the App component",
+      "the page"
+    ],
+    "correctAnswer": 1,
+    "postAnswerText": "<strong>Explanation:</strong>\nFrom official docs: <a href=\"https://reactjs.org/docs/portals.html\">Portals</a>"
+  },
+  {
+    "question": "Q67. What is setCount?",
+    "description": "\n<pre><code>const [count, setCount] = useState(0);\n</code></pre>\n\n\n",
+    "answers": [
+      "the initial state value",
+      "a variable",
+      "a state object",
+      "a function to update the state"
+    ],
+    "correctAnswer": 3,
+    "postAnswerText": "<strong>Reference:</strong>\nFrom official docs: <a href=\"https://reactjs.org/docs/hooks-state.html#:~:text=If%20we%20want%20to%20update%20the%20current\">Hooks-State</a>"
+  },
+  {
+    "question": "Q68. What is the use of map function below?",
+    "description": "\n<pre><code>const database = [user1:{},user2:{},user3:{}];\ndatabase.map((user)=&gt;&lt;h1&gt;user.data&lt;/h1&gt;);\n</code></pre>\n\n",
+    "answers": [
+      "gives a map of all the entries in database",
+      "returns a heading tag for every entry in the database containing it's data",
+      "returns one heading tag for all the entries in database",
+      "checks which entry in the database is suitable for heading tag"
+    ],
+    "correctAnswer": 1,
+    "postAnswerText": null
+  },
+  {
+    "question": "Q69. Describe what is happening in this code?",
+    "description": "\n<pre><code>const { name: firstName } = person;\n</code></pre>\n\n",
+    "answers": [
+      "It is creating a new object that contains the same name property as the person object.",
+      "It is assigning the value of the person object's firstName property to a constant called name.",
+      "It is retrieving the value of person.name.firstName.",
+      "It is assigning the value of the person object's name property to a constant called firstName."
+    ],
+    "correctAnswer": 3,
+    "postAnswerText": null
+  },
+  {
+    "question": "Q70. What is wrong with this code?",
+    "description": "\n<pre><code>const MyComponent = ({ names }) =&gt; (\n  &lt;h1&gt;Hello&lt;/h1&gt;\n  &lt;p&gt;Hello again&lt;/p&gt;\n);\n</code></pre>\n\n",
+    "answers": [
+      "React components cannot be defined using functions.",
+      "React does not allow components to return more than one element.",
+      "The component needs to use the return keyword.",
+      "String literals must be surrounded by quotes."
+    ],
+    "correctAnswer": 1,
+    "postAnswerText": null
+  },
+  {
+    "question": "Q71. When using a portal, what is the second argument?",
+    "description": "\n<pre><code>ReactDOM.createPortal(x, y);\n</code></pre>\n\n",
+    "answers": [
+      "the App component",
+      "the page",
+      "the current state",
+      "the DOM element that exists outside of the parent component"
+    ],
+    "correctAnswer": 3,
+    "postAnswerText": null
+  },
+  {
+    "question": "Q72. Given this code, what will be printed in the <h1> tag?",
+    "description": "\n<pre><code>const MyComponent = ({ children }) =&gt; (\n  &lt;h1&gt;{children.length}&lt;/h1&gt;\n);\n...\n&lt;MyComponent&gt;\n&lt;p&gt;Hello&lt;/p&gt;\n&lt;p&gt;Goodbye&lt;/p&gt;\n&lt;/MyComponent&gt;\n</code></pre>\n\n",
+    "answers": [
+      "It will produce an error saying \"cannot read property \"length\" of undefined.\"",
+      "1",
+      "undefined",
+      "2"
+    ],
+    "correctAnswer": 3,
+    "postAnswerText": null
+  },
+  {
+    "question": "Q73. What is this pattern called?",
+    "description": "\n<pre><code>const [count, setCount] = useState(0);\n</code></pre>\n\n",
+    "answers": [
+      "object destructuring",
+      "array destructuring",
+      "spread operating",
+      "code pushing"
+    ],
+    "correctAnswer": 1,
+    "postAnswerText": null
+  },
+  {
+    "question": "Q74. What is the first file loaded by the browser in a basic React project?",
+    "description": "\n\n",
+    "answers": [
+      "src/App.js",
+      "src/index.js",
+      "public/manifest.json",
+      "public/index.html"
+    ],
+    "correctAnswer": 3,
+    "postAnswerText": null
+  },
+  {
+    "question": "Q75. The code below is rendering nothing, and there is an error that says \"ReactDOM is not defined.\" How do you fix this issue?",
+    "description": "\n<pre><code>import React from 'react';\nimport { render } from 'react-dom';\n\nconst element = &lt;h1&gt;Hi&lt;/h1&gt;;\n\nReactDOM.render(element, document.getElementById('root'));\n</code></pre>\n\n",
+    "answers": [
+      "<code>render(element, document.getElementById(\"root\"));</code>",
+      "<code>ReactDOM(element, document.getElementById(\"root\"));</code>",
+      "<code>renderDOM(element, document.getElementById(\"root\"));</code>",
+      "<code>DOM(element, document.getElementById(\"root\"));</code>"
+    ],
+    "correctAnswer": 0,
+    "postAnswerText": null
+  },
+  {
+    "question": "Q76. In this component, how do you display whether the user was logged in or not?",
+    "description": "\n<pre><code>render() {\n  const isLoggedIn = this.state.isLoggedIn;\n  return (\n    &lt;div&gt;\n      The user is:\n    &lt;/div&gt;\n  );\n}\n</code></pre>\n\n",
+    "answers": [
+      "<code>The user is loggedIn ? logged in : not logged in.</code>",
+      "Write a function to check the login status.",
+      "<code>The user is {isLoggedIn = \"no\"}.</code>",
+      "<code>The user is {isLoggedIn ? \"logged in.\" : \"not logged in\"}.</code>"
+    ],
+    "correctAnswer": 3,
+    "postAnswerText": null
+  },
+  {
+    "question": "Q77. You are rendering a list with React when this warning appears in the console: \"Warning: Each child in a list should have a unique 'key' prop.\" How do you fix this issue?",
+    "description": "\n\n",
+    "answers": [
+      "Pass the name of each item as its key.",
+      "Add a key prop with the same value to each item the list.",
+      "Clear the console warnings.",
+      "When iterating over the list items, add a unique property to each list item."
+    ],
+    "correctAnswer": 3,
+    "postAnswerText": null
+  },
+  {
+    "question": "Q78. How would you generate the boilerplate code for a new app that you are building to collect underpants?",
+    "description": "\n\n\n",
+    "answers": [
+      "npm create-react-app collect-underpants",
+      "npx start-app collect-underpants",
+      "react new collect-underpants",
+      "npx create-react-app collect-underpants"
+    ],
+    "correctAnswer": 3,
+    "postAnswerText": "<a href=\"https://reactjs.org/docs/create-a-new-react-app.html#create-react-app\">Source: React Docs</a>"
+  },
+  {
+    "question": "Q79. Add the code that will fire the photon torpedoes when the button is clicked.",
+    "description": "\n<pre><code>class StarTrekkin extends React.Component {\n  firePhotonTorpedoes(e) {\n    console.log('pew pew');\n  }\n  render() {\n    return; // Missing code\n  }\n}\n</code></pre>\n\n\n",
+    "answers": [
+      "<code>&lt;button onClick={firePhotonTorpedoes()}&gt;Pew Pew&lt;/button&gt;</code>",
+      "<code>&lt;button onClick={firePhotonTorpedoes}&gt;Pew Pew&lt;/button&gt;</code>",
+      "<code>&lt;button onClick={this.firePhotonTorpedoes()}&gt;Pew Pew&lt;/button&gt;</code>",
+      "<code>&lt;button onClick={this.firePhotonTorpedoes}&gt;Pew Pew&lt;/button&gt;</code>"
+    ],
+    "correctAnswer": 3,
+    "postAnswerText": "<a href=\"https://reactjs.org/docs/handling-events.html\">Source: React Docs</a>"
+  },
+  {
+    "question": "Q80. What is the process of deciding whether an update is necessary?",
+    "description": "\n\n",
+    "answers": ["shadow DOM", "fiber", "reconciliation", "setting state"],
+    "correctAnswer": 2,
+    "postAnswerText": null
+  },
+  {
+    "question": "Q81. React is an open-source project but is maintained by which company?",
+    "description": "\n\n",
+    "answers": ["Intuit", "Twitter", "Facebook", "Snapchat"],
+    "correctAnswer": 2,
+    "postAnswerText": null
+  },
+  {
+    "question": "Q82. What command can you use to generate a React project?",
+    "description": "\n\n",
+    "answers": [
+      "react-starter",
+      "create-react-app",
+      "react-gen",
+      "react-start"
+    ],
+    "correctAnswer": 1,
+    "postAnswerText": null
+  },
+  {
+    "question": "Q83. What is the browser extension called that React developers use to debug applications?",
+    "description": "\n\n",
+    "answers": [
+      "React Developer Tools",
+      "React Tooling Add-on",
+      "React Codewatch",
+      "React Debug"
+    ],
+    "correctAnswer": 0,
+    "postAnswerText": null
+  },
+  {
+    "question": "Q84. Which tool is not part of Create React App?",
+    "description": "\n\n",
+    "answers": ["React", "jQuery", "webpack", "ReactDOM"],
+    "correctAnswer": 1,
+    "postAnswerText": null
+  },
+  {
+    "question": "Q85. What is the JavaScript syntax extension that is commonly used to create React elements?",
+    "description": "\n\n",
+    "answers": ["HTML", "JavaScriptX", "JSX", "React JavaScript"],
+    "correctAnswer": 2,
+    "postAnswerText": null
+  },
+  {
+    "question": "Q86. How might you check property types without using Flow or TypeScript?",
+    "description": "\n\n",
+    "answers": [
+      "Check Manually.",
+      "Use <code>prop-helper</code>.",
+      "use <code>prop-types</code>.",
+      "user <code>checker-types</code>."
+    ],
+    "correctAnswer": 2,
+    "postAnswerText": null
+  },
+  {
+    "question": "Q87. How do you add an id of heading to the following h1 element?",
+    "description": "\n<p><code>let dish = &lt;h1&gt;Mac and Cheese&lt;/h1&gt;; </code></p>\n\n",
+    "answers": [
+      "<code>let dish = &lt;h1 id={heading}&gt;Mac and Cheese&lt;/h1&gt;;</code>",
+      "<code>let dish = &lt;h1 id=\"heading\"&gt;Mac and Cheese&lt;/h1&gt;;</code>",
+      "<code>let dish = &lt;h1 id:\"heading\"&gt;Mac and Cheese&lt;/h1&gt;;</code>",
+      "<code>let dish = &lt;h1 class=\"heading\"&gt;Mac and Cheese&lt;/h1&gt;;</code>"
+    ],
+    "correctAnswer": 1,
+    "postAnswerText": null
+  },
+  {
+    "question": "Q88. What value of button will allow you to pass the name of the person to be hugged?",
+    "description": "\n<pre><code>class Huggable extends React.Component {\n  hug(id) {\n    console.log(\"hugging \" + id);\n  }\n  render() {\n    let name = \"kitten\";\n    let button = // Missing code\n    return button;\n  }\n}\n</code></pre>\n\n\n",
+    "answers": [
+      "<code>&lt;button onClick={(name) =&gt; this.hug(name)}&gt;Hug Button&lt;/button&gt;;</code>",
+      "<code>&lt;button onClick={this.hug(e, name)}&gt;Hug Button&lt;/button&gt;;</code>",
+      "<code>&lt;button onClick={(e) =&gt; hug(name, e)}&gt;Hug Button&lt;/button&gt;;</code>",
+      "<code>&lt;button onClick={(e) =&gt; this.hug(name, e)}&gt;Hug Button&lt;/button&gt;;</code>"
+    ],
+    "correctAnswer": 3,
+    "postAnswerText": "<strong>Explanation:</strong>\nThis question test knowledge of react class components. You need to use <code>this</code> in order to call methods declared inside class components."
+  },
+  {
+    "question": "Q89. What syntax do you use to create a component in React?",
+    "description": "\n\n\n",
+    "answers": [
+      "a generator",
+      "a function or a class",
+      "a service worker",
+      "a tag"
+    ],
+    "correctAnswer": 1,
+    "postAnswerText": "<code>React Components are like functions that return HTML elements. Components are independent and reusable bits of code. They serve the same purpose as JavaScript functions, but work in isolation and return HTML. Components come in two types, Class components and Function components.</code> <a href=\"https://reactjs.org/docs/components-and-props.html\">(Source)</a>"
+  },
+  {
+    "question": "Q90. You want to disable a button so that it does not emit any events onClick. Which prop do you use to acomplish this?",
+    "description": "\n\n",
+    "answers": ["onBlur", "onPress", "defaultValue", "disabled"],
+    "correctAnswer": 3,
+    "postAnswerText": null
+  },
+  {
+    "question": "Q91. In this function, which is the best way to describe the Dish component?",
+    "description": "\n<pre><code>function Dish() {\n  return (\n    &lt;&gt;\n      &lt;Ingredient /&gt;\n      &lt;Ingredient /&gt;\n    &lt;/&gt;\n  );\n}\n</code></pre>\n\n",
+    "answers": [
+      "child component",
+      "parent component",
+      "nested component",
+      "sibling component"
+    ],
+    "correctAnswer": 1,
+    "postAnswerText": null
+  },
+  {
+    "question": "Q92. When does the componentDidMount function fire?",
+    "description": "\n\n",
+    "answers": [
+      "right after the component is added to the DOM",
+      "before the component is added to the DOM",
+      "right after the component is updated",
+      "right after an API call"
+    ],
+    "correctAnswer": 0,
+    "postAnswerText": null
+  },
+  {
+    "question": "Q93. What might you use webpack for?",
+    "description": "\n\n",
+    "answers": [
+      "to fetch remote dependencies used by your app",
+      "to split your app into smaller chunks that can be more easily loaded by the browser",
+      "to format your code so that it is more readable",
+      "to ensure your app is not vulnerable to code injection"
+    ],
+    "correctAnswer": 1,
+    "postAnswerText": null
+  },
+  {
+    "question": "Q94. When using the React Developer Tools Chrome extension, what does it mean if the React icon is red?",
+    "description": "\n\n\n",
+    "answers": [
+      "You are using the development build of React.",
+      "You are using the production build of React.",
+      "You are using webpack.",
+      "You are using Create React App."
+    ],
+    "correctAnswer": 0,
+    "postAnswerText": "<a href=\"https://teamtreehouse.com/community/hey-why-the-logo-of-react-developer-tools-appears-in-red\">Reference</a>"
+  },
+  {
+    "question": "Q95. How would you modify the constructor to fix this erroe: \"ReferenceError: Must call super constructor in derived class before accessing 'this'...\"?",
+    "description": "\n<pre><code>class TransIsBeautiful extends React.Component {\n  constructor(props){\n  // Missing line\n  console.log(this) ;\n  }\n  ...\n}\n</code></pre>\n\n",
+    "answers": [
+      "render(props);",
+      "super(props);",
+      "super(this);",
+      "this.super();"
+    ],
+    "correctAnswer": 1,
+    "postAnswerText": null
+  },
+  {
+    "question": "Q96. Which language can you not use with React?",
+    "description": "\n\n",
+    "answers": ["Swift.", "JSX.", "Javascipt.", "TypeScript."],
+    "correctAnswer": 0,
+    "postAnswerText": null
+  },
+  {
+    "question": "Q97. This code is part of an app that collects Pokemon. How would you print the list of the ones collected so far?",
+    "description": "\n<pre><code>constructor(props) {\n    super(props);\n    this.state = {\n        pokeDex: []\n    };\n}\n</code></pre>\n\n\n",
+    "answers": [
+      "console.log(props.pokeDex);",
+      "console.log(this.props.pokeDex);",
+      "console.log(pokeDex);",
+      "console.log(this.state.pokeDex);"
+    ],
+    "correctAnswer": 3,
+    "postAnswerText": "<a href=\"https://www.digitalocean.com/community/tutorials/how-to-manage-state-on-react-class-components#step-3-setting-state-from-a-static-value\">Reference</a>"
+  },
+  {
+    "question": "Q98. What would be the result of running this code?",
+    "description": "\n<pre><code>function add(x = 1, y = 2) {\n  return x + y;\n}\n\nadd();\n</code></pre>\n\n\n",
+    "answers": ["null", "3", "0", "undefined"],
+    "correctAnswer": 1,
+    "postAnswerText": "<img src=\"https://user-images.githubusercontent.com/62549240/160531605-bf8790d5-5eb9-4291-a9bd-4232f2fd7b6e.png\" alt=\"image\">"
+  },
+  {
+    "question": "Q99. Why might you use a React.ref?",
+    "description": "\n\n\n",
+    "answers": [
+      "to refer to another JS file",
+      "to bind the function",
+      "to call a function",
+      "to directly access the DOM node"
+    ],
+    "correctAnswer": 3,
+    "postAnswerText": "<a href=\"https://reactjs.org/docs/refs-and-the-dom.html\">Reference</a>"
+  },
+  {
+    "question": "Q100. What pattern is being used in this code?",
+    "description": "\n<pre><code>const { tree, lake } = nature;\n</code></pre>\n\n\n",
+    "answers": [
+      "function defaults",
+      "array destructuring",
+      "PRPL pattern",
+      "destructuring assignment"
+    ],
+    "correctAnswer": 3,
+    "postAnswerText": "<a href=\"https://javascript.info/destructuring-assignment\">Reference</a>"
+  }
+]
