@@ -12,7 +12,7 @@ const QuestionAnswers = ({
   onAnswerSelect,
 }: QuestionAnswersParams) => {
   return (
-    <ul className='my-4 w-1/3'>
+    <ul className='my-4'>
       {question.answers.map((answer, index) => (
         <li
           key={`answer-key-${index}`}

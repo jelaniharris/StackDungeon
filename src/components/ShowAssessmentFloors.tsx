@@ -1,6 +1,6 @@
 'use client';
 
-import { redirect } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 
@@ -22,6 +22,7 @@ export const ShowAssessmentFloors = ({ title }: ShowAssessmentFloorsParams) => {
   ]);
   const dispatch = useDispatch();
   const [dungeonData, setDungeonData] = useState<Dungeon[]>();
+  const { push } = useRouter();
 
   useEffect(() => {
     const newDungeonData: Dungeon[] = [];
@@ -65,10 +66,10 @@ export const ShowAssessmentFloors = ({ title }: ShowAssessmentFloorsParams) => {
     return <>Generating Dungeons</>;
   }
 
-  const assignDungeon = (dungeon: Dungeon) => {
+  const assignDungeon = async (dungeon: Dungeon) => {
     console.log('Clicked on', dungeon.name);
-    dispatch(dungeonAction.setDungeon(dungeon));
-    redirect('/quiz');
+    await dispatch(dungeonAction.setDungeon(dungeon));
+    push('/quiz');
   };
 
   return (

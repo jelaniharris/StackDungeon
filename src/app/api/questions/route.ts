@@ -1,12 +1,20 @@
-import mongoose from 'mongoose';
+import mongoose, { PipelineStage } from 'mongoose';
 import { NextRequest, NextResponse } from 'next/server';
+import querystring from 'node:querystring';
 
 import { Question } from '@/models/questions';
 import { QuestionType } from '@/schema/question.schema';
 
 export async function GET(request: NextRequest) {
   const querySearchParams = await request.nextUrl.searchParams;
-  const { domains } = Object.fromEntries(querySearchParams);
+
+  const parsedJSON = querystring.parse(querySearchParams.toString());
+
+  const { domains } = parsedJSON;
+
+  console.log('querySearchParams are: ', querySearchParams);
+  console.log('parsed json ', parsedJSON);
+  console.log('Domains are: ', domains);
 
   if (!process.env.MONGODB_URI) {
     throw new Error('Could not find mongodb uri');
@@ -14,22 +22,27 @@ export async function GET(request: NextRequest) {
 
   try {
     await mongoose.connect(process.env.MONGODB_URI);
+    //FilterQuery<any>
+    let match: PipelineStage.Match = {
+      $match: {
+        domain: { $in: domains },
+      },
+    };
+
+    if (!Array.isArray(domains) && domains !== undefined) {
+      match = {
+        $match: {
+          domain: domains,
+        },
+      };
+    }
 
     const questionSet = await Question.aggregate([
-      {
-        $match: {
-          domain: { $in: domains },
-        },
-      },
+      match,
       {
         $sample: { size: 10 },
       },
     ]);
-
-    //const rawdata = await readFile("./src/data/reactjs.json", "utf8");
-    //const data = JSON.parse(rawdata);
-
-    //const questionSet: QuestionJsonType[] = sampleSize(data, 10);
 
     const questions: QuestionType[] = [];
 
@@ -48,18 +61,7 @@ export async function GET(request: NextRequest) {
       });
     });
 
-    /*let questions: QuestionType[] = [
-    {
-      id: 1,
-      question: "How many ducks (D D D) ?",
-      answers: ["5", "3", "2"],
-      correctAnswer: 3,
-    },
-  ];*/
-
     await mongoose.disconnect();
-
-    //res.status(200).json({ questions });
 
     return NextResponse.json({ questions });
   } catch (error) {
