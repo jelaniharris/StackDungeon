@@ -24,12 +24,6 @@ const Quiz = () => {
   const dispatch = useDispatch();
 
   const pageSearchParams = useSearchParams();
-  const desiredDomain = pageSearchParams
-    ? pageSearchParams.get('domain') || ''
-    : '';
-  const desiredNumberOfQuestions = pageSearchParams
-    ? parseInt(pageSearchParams.get('numberOfQuestions') || '', 10) || ''
-    : 3;
 
   useEffect(() => {
     console.log('Loading Questions');
@@ -43,10 +37,23 @@ const Quiz = () => {
 
       console.log('Actually getting data ...');
 
+      let desiredDomain = dungeon.dungeon.domains;
+      if (pageSearchParams && pageSearchParams.has('domain')) {
+        desiredDomain = [pageSearchParams.get('domain') || ''];
+      }
+
+      let desiredNumberOfQuestions: number | null =
+        dungeon.dungeon.numberOfQuestions;
+      if (pageSearchParams && pageSearchParams.has('numberOfQuestions')) {
+        desiredNumberOfQuestions = parseInt(
+          pageSearchParams.get('numberOfQuestions') || '0',
+          10
+        );
+      }
+
       const questionData = await getQuestions({
-        domains: [desiredDomain] || dungeon.dungeon.domains,
-        numberOfQuestions:
-          desiredNumberOfQuestions || dungeon.dungeon.numberOfQuestions,
+        domains: desiredDomain,
+        numberOfQuestions: desiredNumberOfQuestions,
       });
 
       // Assign the data loaded
@@ -62,14 +69,7 @@ const Quiz = () => {
     if (quiz.questions.length == 0 && !isLoading) {
       loadQuestions();
     }
-  }, [
-    desiredDomain,
-    desiredNumberOfQuestions,
-    dispatch,
-    dungeon,
-    isLoading,
-    quiz.questions.length,
-  ]);
+  }, [dispatch, dungeon, isLoading, pageSearchParams, quiz.questions.length]);
 
   if (isLoading)
     return (

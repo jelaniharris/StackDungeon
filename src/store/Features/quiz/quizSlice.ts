@@ -30,6 +30,7 @@ export const quizSlice = createSlice({
       for (let k = 0; k < state.questions.length; k++) {
         emptyAnswers.push(null);
       }
+      state.currentQuestion = 0;
       state.answerSet = emptyAnswers;
     },
     assignAnswer: (state, action) => {

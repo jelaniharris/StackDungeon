@@ -1,5 +1,6 @@
-import clsx from 'clsx';
 import React from 'react';
+
+import clsxm from '@/lib/clsxm';
 
 import { QuestionType } from '@/schema/question.schema';
 
@@ -19,21 +20,27 @@ const QuestionAnswers = ({
   return (
     <ul className='my-4'>
       {question.answers.map((answer, index) => {
+        // Is this answer the one the user selected
         const isSelectedAnswer = selectedAnswer == index;
+
+        // Is this answer the correct answer
         const isCorrectAnswer = question.correctAnswer == index;
+
+        const isAnswerRight = isSelectedAnswer && isCorrectAnswer;
 
         return (
           <li
             key={`answer-key-${index}`}
-            className={clsx([
+            className={clsxm([
               'my-2 cursor-pointer rounded-md bg-slate-200 p-3 text-black',
+              // They did not select an answer, all of them can be hovered over
               !confirmedAnswer && 'hover:bg-blue-600 hover:text-gray-300',
-              //confirmedAnswer && 'bg-slate-400',
-              isSelectedAnswer && 'bg-blue-500 text-white',
-              confirmedAnswer &&
-                isSelectedAnswer &&
-                isCorrectAnswer &&
-                'bg-green-500 text-white',
+              // Is the selected answer and is not confirmed
+              !confirmedAnswer && isSelectedAnswer && 'bg-blue-500 text-white',
+              // Is selected, and is the correct one
+              confirmedAnswer && isAnswerRight && 'bg-green-500 text-white',
+              confirmedAnswer && isCorrectAnswer && 'bg-green-500 text-white',
+              // Is selected, and is the wrong one
               confirmedAnswer &&
                 isSelectedAnswer &&
                 !isCorrectAnswer &&

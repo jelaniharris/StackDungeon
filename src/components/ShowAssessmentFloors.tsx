@@ -10,6 +10,7 @@ import { DOMAIN_DATA } from '@/components/SelectStacks';
 import { useAppSelector } from '@/store';
 import { Dungeon } from '@/store/Features/dungeon/DungeonSlice';
 import { dungeonAction } from '@/store/Features/dungeon/DungeonSlice';
+import { quizAction } from '@/store/Features/quiz/quizSlice';
 
 interface ShowAssessmentFloorsParams {
   title: string;
@@ -69,6 +70,8 @@ export const ShowAssessmentFloors = ({ title }: ShowAssessmentFloorsParams) => {
 
   const assignDungeon = async (dungeon: Dungeon) => {
     console.log('Clicked on', dungeon.name);
+    // Reset the answer set
+    await dispatch(quizAction.resetAnswerSet());
     await dispatch(dungeonAction.setDungeon(dungeon));
     push('/quiz');
   };

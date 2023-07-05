@@ -27,6 +27,8 @@ const QuestionForm = ({
   });
 
   const onAnswerSelect = (answerIndex: number) => {
+    console.log('Selected answer index: ', answerIndex);
+    console.log('Correct question answer index: ', question.correctAnswer);
     setSelectAnswer(answerIndex);
   };
 
