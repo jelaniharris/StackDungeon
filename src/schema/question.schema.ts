@@ -1,3 +1,8 @@
+export type QuestionSourceType = {
+  url: string;
+  questionNumber?: number;
+};
+
 export type QuestionType = {
   id?: number;
   question: string;
@@ -5,10 +10,11 @@ export type QuestionType = {
   content?: string;
   answers: string[];
   domain: string;
+  grouping?: string;
   questionType: string;
   answerInfo?: string;
-  source?: string;
-  correctAnswer: number;
+  source?: QuestionSourceType;
+  correctAnswers: number[];
 };
 
 export type GetQuestions = {

@@ -17,6 +17,7 @@ const QuestionAnswers = ({
   selectedAnswer,
   confirmedAnswer,
 }: QuestionAnswersParams) => {
+  console.log(question);
   return (
     <ul className='my-4'>
       {question.answers.map((answer, index) => {
@@ -24,7 +25,7 @@ const QuestionAnswers = ({
         const isSelectedAnswer = selectedAnswer == index;
 
         // Is this answer the correct answer
-        const isCorrectAnswer = question.correctAnswer == index;
+        const isCorrectAnswer = question.correctAnswers.includes(index);
 
         const isAnswerRight = isSelectedAnswer && isCorrectAnswer;
 
@@ -38,6 +39,10 @@ const QuestionAnswers = ({
               // Is the selected answer and is not confirmed
               !confirmedAnswer && isSelectedAnswer && 'bg-blue-500 text-white',
               // Is selected, and is the correct one
+              confirmedAnswer &&
+                !isSelectedAnswer &&
+                !isCorrectAnswer &&
+                'opacity-50',
               confirmedAnswer && isAnswerRight && 'bg-green-500 text-white',
               confirmedAnswer && isCorrectAnswer && 'bg-green-500 text-white',
               // Is selected, and is the wrong one

@@ -72,6 +72,7 @@ export const ShowAssessmentFloors = ({ title }: ShowAssessmentFloorsParams) => {
     console.log('Clicked on', dungeon.name);
     // Reset the answer set
     await dispatch(quizAction.resetAnswerSet());
+    await dispatch(quizAction.setCurrentQuestion(0));
     await dispatch(dungeonAction.setDungeon(dungeon));
     push('/quiz');
   };

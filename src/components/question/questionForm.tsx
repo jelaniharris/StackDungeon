@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 
+import DomainImage from '@/components/DomainImage';
+import { DOMAIN_DATA } from '@/components/SelectStacks';
+
 import { QuestionType } from '@/schema/question.schema';
 
 import QuestionAnswers from './questionAnswers';
@@ -19,6 +22,7 @@ const QuestionForm = ({
   const [style, setStyle] = useState({});
   const [selectedAnswer, setSelectAnswer] = useState<number | null>(null);
   const [confirmedAnswer, setConfirmedAnswer] = useState(false);
+  const [timeExpired] = useState(false);
 
   useEffect(() => {
     import('react-syntax-highlighter/dist/esm/styles/hljs').then((mod) =>
@@ -28,12 +32,15 @@ const QuestionForm = ({
 
   const onAnswerSelect = (answerIndex: number) => {
     console.log('Selected answer index: ', answerIndex);
-    console.log('Correct question answer index: ', question.correctAnswer);
+    console.log('Correct question answer index: ', question.correctAnswers);
     setSelectAnswer(answerIndex);
   };
 
   const advanceQuiz = () => {
-    if (selectedAnswer == Number(question.correctAnswer)) {
+    if (
+      selectedAnswer != null &&
+      question.correctAnswers.includes(selectedAnswer)
+    ) {
       onResult(true);
     } else {
       onResult(false);
@@ -57,13 +64,55 @@ const QuestionForm = ({
     );
   };
 
+  const ShowCorrectWrong = () => {
+    if (!confirmedAnswer) {
+      return <></>;
+    }
+
+    // If they selected an answer or time has expired
+    let result = false;
+
+    // If they ran out of time, then it's wrong
+    if (timeExpired) {
+      result = false;
+    }
+
+    if (
+      confirmedAnswer &&
+      selectedAnswer != null &&
+      question.correctAnswers.includes(selectedAnswer)
+    ) {
+      result = true;
+    }
+
+    if (!result) {
+      return (
+        <div className='bg-red-100 p-3 text-center text-xl text-red-600'>
+          Incorrect
+        </div>
+      );
+    }
+    return (
+      <div className='bg-green-100 p-3 text-center text-xl text-green-600'>
+        Correct
+      </div>
+    );
+  };
+
+  const domainData = DOMAIN_DATA.find((data) => data.slug === question.domain);
+
   return (
     <div className='rounded-md bg-background-secondary p-8 text-text'>
-      <h1 className='text-center text-2xl font-bold'>{`Question ${
-        questionNumber ? Number(questionNumber) + 1 : '?'
-      }`}</h1>
+      <div className='mb-7 flex flex-row items-center justify-between'>
+        <div className='rounded-md bg-accent-200 p-2'>
+          <DomainImage domainData={domainData} width={40} height={40} />
+        </div>
+        <h1 className='text-center text-2xl font-bold '>{`Question ${Number(
+          questionNumber + 1
+        )}`}</h1>
+        <span></span>
+      </div>
       <h2 className='text-xl font-medium'>{question.question}</h2>
-      <h5>{question.domain}</h5>
 
       <QuestionContent content={question.content || ''} />
 
@@ -74,6 +123,14 @@ const QuestionForm = ({
           onAnswerSelect={onAnswerSelect}
           confirmedAnswer={confirmedAnswer}
         />
+      )}
+      {confirmedAnswer && (
+        <div className='flex flex-col gap-4'>
+          <ShowCorrectWrong />
+          {question.answerInfo && question.answerInfo.length > 0 && (
+            <p className='mt-5'>{question.answerInfo}</p>
+          )}
+        </div>
       )}
       <div className='mt-5 flex flex-row items-center justify-around gap-3'>
         {!confirmedAnswer && (

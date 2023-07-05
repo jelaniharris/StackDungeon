@@ -27,6 +27,8 @@ export const DOMAIN_DATA = [
   },
   { name: 'Node JS', slug: 'nodejs', logo: '/icons/tech/nodejs.png' },
   { name: 'Javascript', slug: 'javascript', logo: '/icons/tech/js.png' },
+  { name: 'Php', slug: 'php', logo: '/icons/tech/php.png' },
+  { name: 'MySQL', slug: 'mysql', logo: '/icons/tech/mysql.png' },
 ];
 
 const SelectStacks = () => {
