@@ -12,6 +12,7 @@ export type Dungeon = {
   hasTimer: boolean;
   timePerQuestion?: number;
   difficulty: number;
+  passPercentage?: number;
   numberOfQuestions: number;
   difficultyReasons: DifficultyReasonType[];
   domains: string[];

@@ -1,8 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import SyntaxHighlighter from 'react-syntax-highlighter';
+import React, { useCallback, useEffect, useState } from 'react';
 
 import DomainImage from '@/components/DomainImage';
+import { useCountdown } from '@/components/hooks/UseCountdown';
+import { Markdown } from '@/components/Markdown';
 import { DOMAIN_DATA } from '@/components/SelectStacks';
+
+import { useAppSelector } from '@/store';
 
 import { QuestionType } from '@/schema/question.schema';
 
@@ -19,16 +22,26 @@ const QuestionForm = ({
   questionNumber,
   onResult,
 }: QuestionFormParams) => {
-  const [style, setStyle] = useState({});
   const [selectedAnswer, setSelectAnswer] = useState<number | null>(null);
   const [confirmedAnswer, setConfirmedAnswer] = useState(false);
-  const [timeExpired] = useState(false);
+  const [timeExpired, setTimeExpired] = useState(false);
+  const timeHasExpired = useCallback(() => {
+    console.log('Time expired');
+    setTimeExpired(true);
+    setConfirmedAnswer(true);
+  }, []);
+  const { counter, startTimer, stopTimer } = useCountdown({
+    onComplete: timeHasExpired,
+  });
+
+  const dungeon = useAppSelector((state) => state.dungeon);
 
   useEffect(() => {
-    import('react-syntax-highlighter/dist/esm/styles/hljs').then((mod) =>
-      setStyle(mod.default)
-    );
-  });
+    console.log('Use effect');
+    if (dungeon.dungeon.timePerQuestion) {
+      startTimer(dungeon.dungeon.timePerQuestion);
+    }
+  }, [dungeon, startTimer]);
 
   const onAnswerSelect = (answerIndex: number) => {
     console.log('Selected answer index: ', answerIndex);
@@ -49,19 +62,14 @@ const QuestionForm = ({
 
   const onSubmitAnswer = () => {
     setConfirmedAnswer(true);
+    stopTimer();
   };
 
   const QuestionContent = ({ content }: { content: string }) => {
     if (!content || content.trim().length == 0) {
       return <></>;
     }
-    return (
-      <div className='mt-4 rounded-xl bg-background-400 p-4'>
-        <SyntaxHighlighter language='javascript' style={style}>
-          {content}
-        </SyntaxHighlighter>
-      </div>
-    );
+    return <Markdown content={content} />;
   };
 
   const ShowCorrectWrong = () => {
@@ -103,6 +111,15 @@ const QuestionForm = ({
 
   return (
     <div className='rounded-md bg-background-secondary p-8 text-text'>
+      <div className='text-center'>
+        {!timeExpired && (
+          <h3>
+            Time Left: {Math.floor(counter / 60)}:
+            {(counter % 60).toString().padStart(2, '0')}
+          </h3>
+        )}
+        {timeExpired && <h3>Time's Up!</h3>}
+      </div>
       <div className='mb-7 flex flex-row items-center justify-between'>
         <div className='rounded-md bg-accent-200 p-2'>
           <DomainImage domainData={domainData} width={40} height={40} />

@@ -33,6 +33,9 @@ export const quizSlice = createSlice({
       state.currentQuestion = 0;
       state.answerSet = emptyAnswers;
     },
+    resetQuestions: (state) => {
+      state.questions = [];
+    },
     assignAnswer: (state, action) => {
       state.answerSet[action.payload.questionNumber] =
         action.payload.questionResult;

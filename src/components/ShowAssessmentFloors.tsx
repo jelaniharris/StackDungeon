@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { batch, useDispatch } from 'react-redux';
 
 import { DungeonSelector } from '@/components/DungeonSelector';
 import { DOMAIN_DATA } from '@/components/SelectStacks';
@@ -17,10 +17,9 @@ interface ShowAssessmentFloorsParams {
 }
 
 export const ShowAssessmentFloors = ({ title }: ShowAssessmentFloorsParams) => {
-  const [quest, character] = useAppSelector((state) => [
-    state.quest,
-    state.character,
-  ]);
+  const quest = useAppSelector((state) => state.quest);
+  const character = useAppSelector((state) => state.character);
+
   const dispatch = useDispatch();
   const [dungeonData, setDungeonData] = useState<Dungeon[]>();
   const { push } = useRouter();
@@ -29,7 +28,7 @@ export const ShowAssessmentFloors = ({ title }: ShowAssessmentFloorsParams) => {
     const newDungeonData: Dungeon[] = [];
 
     const domains = character.domains;
-    const numQuestions = 3;
+    const numQuestions = 5;
 
     // Generating one dungeon per domain
     domains.forEach((domain) => {
@@ -39,6 +38,7 @@ export const ShowAssessmentFloors = ({ title }: ShowAssessmentFloorsParams) => {
         hasTimer: true,
         difficulty: 0,
         numberOfQuestions: numQuestions,
+        passPercentage: 0.7,
         timePerQuestion: 90,
         difficultyReasons: [],
         domains: [domain],
@@ -69,18 +69,22 @@ export const ShowAssessmentFloors = ({ title }: ShowAssessmentFloorsParams) => {
   }
 
   const assignDungeon = async (dungeon: Dungeon) => {
-    console.log('Clicked on', dungeon.name);
+    //console.log('Clicked on', dungeon.name);
     // Reset the answer set
-    await dispatch(quizAction.resetAnswerSet());
-    await dispatch(quizAction.setCurrentQuestion(0));
-    await dispatch(dungeonAction.setDungeon(dungeon));
+    batch(() => {
+      dispatch(quizAction.resetAnswerSet());
+      dispatch(quizAction.setCurrentQuestion(0));
+      dispatch(quizAction.resetQuestions());
+      dispatch(quizAction.setReviewMode(false));
+      dispatch(dungeonAction.setDungeon(dungeon));
+    });
     push('/quiz');
   };
 
   return (
     <>
       {title && <h2> {title}</h2>}
-      <div className='flex flex-row items-center'>
+      <div className='flex flex-row items-baseline'>
         {dungeonData.map((dung, i) => {
           return (
             <DungeonSelector

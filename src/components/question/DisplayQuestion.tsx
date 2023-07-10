@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 
-import QuestionForm from '@/components/question/QuestionForm';
+import QuestionForm from '@/components/question/questionForm';
 
 import { useAppSelector } from '@/store';
 import { quizAction } from '@/store/Features/quiz/quizSlice';
@@ -18,7 +18,7 @@ const DisplayQuestion = ({
 }: DisplayQuestionParams) => {
   const dispatch = useDispatch();
 
-  const [quiz] = useAppSelector((state) => [state.quiz]);
+  const quiz = useAppSelector((state) => state.quiz);
 
   const onResult = (result: boolean) => {
     if (quiz.answerSet) {

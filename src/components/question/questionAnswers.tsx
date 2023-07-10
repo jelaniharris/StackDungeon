@@ -2,6 +2,8 @@ import React from 'react';
 
 import clsxm from '@/lib/clsxm';
 
+import { Markdown } from '@/components/Markdown';
+
 import { QuestionType } from '@/schema/question.schema';
 
 type QuestionAnswersParams = {
@@ -17,7 +19,7 @@ const QuestionAnswers = ({
   selectedAnswer,
   confirmedAnswer,
 }: QuestionAnswersParams) => {
-  console.log(question);
+  //console.log(question);
   return (
     <ul className='my-4'>
       {question.answers.map((answer, index) => {
@@ -57,7 +59,7 @@ const QuestionAnswers = ({
               }
             }}
           >
-            <div dangerouslySetInnerHTML={{ __html: answer }} />
+            <Markdown content={answer} useTheme={false} />
           </li>
         );
       })}

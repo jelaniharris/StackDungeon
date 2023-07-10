@@ -1,5 +1,9 @@
 'use client';
-import { FaSkull } from 'react-icons/fa';
+import {
+  FaPercent as PassPercentage,
+  FaRegClock as ClockIcon,
+  FaSkull,
+} from 'react-icons/fa';
 
 import DomainImage from '@/components/DomainImage';
 import { DOMAIN_DATA } from '@/components/SelectStacks';
@@ -15,11 +19,75 @@ export const DungeonSelector = ({
   dungeon,
   onSelected,
 }: DungeonSelectorParams) => {
+  const DungonMod = ({
+    type,
+    alt,
+    text,
+  }: {
+    type: string;
+    alt: string;
+    text: string;
+  }) => {
+    let typeIcon;
+
+    switch (type) {
+      case 'timer':
+        typeIcon = <ClockIcon />;
+        break;
+      case 'percentage':
+        typeIcon = <PassPercentage />;
+        break;
+      default:
+        typeIcon = <></>;
+        break;
+    }
+
+    return (
+      <div
+        aria-label={alt}
+        className='rounded-md border-2 border-gray-300 bg-gray-100 p-3'
+      >
+        <div className='flex flex-col items-center gap-2 text-6xl'>
+          {typeIcon}
+          <span className='text-2xl'>{text}</span>
+        </div>
+      </div>
+    );
+  };
+
+  const HasPassPercentage = () => {
+    if (!dungeon.passPercentage) {
+      return <></>;
+    }
+    return (
+      <DungonMod
+        alt='Pass Percentage'
+        type='percentage'
+        text={`${Math.round(dungeon.passPercentage * 100)}%`}
+      />
+    );
+  };
+
   const HasTimer = () => {
     if (!dungeon.hasTimer) {
       return <></>;
     }
-    return <span>Timelimit Per Question: ({dungeon.timePerQuestion}s)</span>;
+    return (
+      <DungonMod
+        alt='Timelimit Per Question'
+        type='timer'
+        text={`${dungeon.timePerQuestion}s`}
+      />
+    );
+  };
+
+  const ShowDungeonMods = () => {
+    return (
+      <div className='fa-row flex items-center justify-center gap-3'>
+        <HasTimer />
+        <HasPassPercentage />
+      </div>
+    );
   };
 
   const ShowSkulls = () => {
@@ -92,7 +160,7 @@ export const DungeonSelector = ({
   };
 
   return (
-    <div className='group'>
+    <div className='group w-1/3'>
       <button
         className='m-2 rounded-b-md bg-background-secondary group-hover:bg-accent-100'
         onClick={clickedDungeon}
@@ -101,9 +169,11 @@ export const DungeonSelector = ({
           <h2>{dungeon.name}</h2>
         </div>
         <div className='flex flex-col gap-4 p-4'>
-          <HasTimer />
-          <ShowNumberQuestions />
-          <ShowDomains />
+          <div className='flex flex-row items-center gap-2'>
+            <ShowNumberQuestions />
+            <ShowDomains />
+          </div>
+          <ShowDungeonMods />
           <ShowSkulls />
         </div>
       </button>

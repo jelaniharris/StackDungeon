@@ -105,7 +105,7 @@ class ParseLinkedInMarkdown {
           const optionIndex = parsedOptions.length - 1;
 
           // Check to see if there's a start to a code block
-          if (line.match(/^```/)) {
+          if (line.match(/^\s*```/)) {
             optionCodeWrapped = !optionCodeWrapped;
           }
 
@@ -115,7 +115,9 @@ class ParseLinkedInMarkdown {
             !optionCodeWrapped &&
             (line.match(/^\*\*/) ||
               line.match(/^1\.\s+/) ||
-              line.match(/^\[\w+\]/))
+              line.match(/^\[\w+\]/) ||
+              line.match(/reference/i) ||
+              line.match(/note/i))
           ) {
             endOfOptions = true;
           } else {
@@ -133,7 +135,7 @@ class ParseLinkedInMarkdown {
     let postAnswers = '';
     if (endOfOptions) {
       while (currentLine < lines.length) {
-        postAnswers += lines[currentLine];
+        postAnswers += lines[currentLine] + '\n';
         currentLine++;
       }
     }

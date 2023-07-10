@@ -1,7 +1,7 @@
 'use client';
 
 import { useSearchParams } from 'next/navigation';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 import Layout from '@/components/layout/Layout';
@@ -17,16 +17,21 @@ import { getQuestions } from '@/app/lib/QuestionData';
 const Quiz = () => {
   const [isLoading, setLoading] = useState(false);
 
-  const [dungeon, quiz] = useAppSelector((state) => [
-    state.dungeon,
-    state.quiz,
-  ]);
+  const dungeon = useAppSelector((state) => state.dungeon);
+  const quiz = useAppSelector((state) => state.quiz);
+
   const dispatch = useDispatch();
 
   const pageSearchParams = useSearchParams();
 
+  const dataFetchedRef = useRef(false);
+
   useEffect(() => {
+    if (dataFetchedRef.current) return;
+    dataFetchedRef.current = true;
+
     console.log('Loading Questions');
+
     const loadQuestions = async () => {
       if (!dungeon) {
         console.error('Could not find current dungeon');
@@ -74,7 +79,9 @@ const Quiz = () => {
   if (isLoading)
     return (
       <Layout>
-        <p>Loading Questions...</p>
+        <div className='flex h-screen flex-col items-center justify-center'>
+          <h2>Loading Questions...</h2>
+        </div>
       </Layout>
     );
   if (!quiz.questions || quiz.questions.length === 0)
