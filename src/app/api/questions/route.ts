@@ -1,6 +1,8 @@
-import mongoose, { PipelineStage } from 'mongoose';
+import { PipelineStage } from 'mongoose';
 import { NextRequest, NextResponse } from 'next/server';
 import querystring from 'node:querystring';
+
+import dbConnect from '@/lib/mongodb';
 
 import { Question } from '@/models/questions';
 import { QuestionType } from '@/schema/question.schema';
@@ -21,7 +23,8 @@ export async function GET(request: NextRequest) {
   }
 
   try {
-    await mongoose.connect(process.env.MONGODB_URI);
+    await dbConnect();
+    //mongoose.connect(process.env.MONGODB_URI);
     //FilterQuery<any>
     let match: PipelineStage.Match = {
       $match: {
@@ -52,7 +55,7 @@ export async function GET(request: NextRequest) {
     const questions: QuestionType[] = [];
 
     questionSet.forEach((question, index) => {
-      console.log(question);
+      //console.log(question);
       questions.push({
         id: Number(index) + 1,
         question: question.question,
@@ -67,7 +70,7 @@ export async function GET(request: NextRequest) {
       });
     });
 
-    await mongoose.disconnect();
+    //await mongoose.disconnect();
 
     return NextResponse.json({ questions });
   } catch (error) {

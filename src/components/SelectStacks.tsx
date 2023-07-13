@@ -60,7 +60,7 @@ const SelectStacks = () => {
       <button
         className={clsxm(
           'mx-2 flex flex-col items-center gap-3 rounded-md bg-accent-100 p-5',
-          [selectedDomain === true && 'bg-accent-300']
+          [selectedDomain === true && 'bg-accent-500 text-white']
         )}
         data-slug={domain.slug}
         onClick={() => toggleDomain(domain.slug)}

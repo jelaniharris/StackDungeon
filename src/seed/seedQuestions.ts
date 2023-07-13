@@ -143,7 +143,6 @@ class ParseLinkedInMarkdown {
     postAnswers = postAnswers.trim();
 
     parsedOptions.forEach((option) => {
-      console.log(option);
       const cleanOption = option.replace(/^-\s*%OPTION%/, '').trim();
       newQuestion.answers.push(cleanOption);
     });

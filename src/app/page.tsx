@@ -9,7 +9,7 @@ const Home: NextPage = () => {
   return (
     <Layout>
       <div className='flex h-screen flex-col items-center justify-center font-bold'>
-        Welcome to StackDungeon
+        <h1>Welcome to StackDungeon</h1>
         <ModeSelect />
       </div>
     </Layout>

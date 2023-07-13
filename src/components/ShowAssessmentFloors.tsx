@@ -28,7 +28,7 @@ export const ShowAssessmentFloors = ({ title }: ShowAssessmentFloorsParams) => {
     const newDungeonData: Dungeon[] = [];
 
     const domains = character.domains;
-    const numQuestions = 5;
+    const numQuestions = 10;
 
     // Generating one dungeon per domain
     domains.forEach((domain) => {
@@ -84,7 +84,7 @@ export const ShowAssessmentFloors = ({ title }: ShowAssessmentFloorsParams) => {
   return (
     <>
       {title && <h2> {title}</h2>}
-      <div className='flex flex-row items-baseline'>
+      <div className='flex flex-row gap-5'>
         {dungeonData.map((dung, i) => {
           return (
             <DungeonSelector

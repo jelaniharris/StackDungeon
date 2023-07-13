@@ -1,9 +1,12 @@
 'use client';
+import { MouseEventHandler, useState } from 'react';
 import {
   FaPercent as PassPercentage,
   FaRegClock as ClockIcon,
   FaSkull,
 } from 'react-icons/fa';
+
+import clsxm from '@/lib/clsxm';
 
 import DomainImage from '@/components/DomainImage';
 import { DOMAIN_DATA } from '@/components/SelectStacks';
@@ -19,14 +22,20 @@ export const DungeonSelector = ({
   dungeon,
   onSelected,
 }: DungeonSelectorParams) => {
+  const [modText, setModText] = useState('');
+
   const DungonMod = ({
     type,
     alt,
+    onMouseOver,
+    onMouseOut,
     text,
   }: {
     type: string;
     alt: string;
     text: string;
+    onMouseOver: MouseEventHandler;
+    onMouseOut: MouseEventHandler;
   }) => {
     let typeIcon;
 
@@ -44,6 +53,8 @@ export const DungeonSelector = ({
 
     return (
       <div
+        onMouseOver={onMouseOver}
+        onMouseOut={onMouseOut}
         aria-label={alt}
         className='rounded-md border-2 border-gray-300 bg-gray-100 p-3'
       >
@@ -55,12 +66,22 @@ export const DungeonSelector = ({
     );
   };
 
+  const ClearHoverModText = () => {
+    setModText('');
+  };
+
+  const SetHoverModText = (text: string) => {
+    setModText(text);
+  };
+
   const HasPassPercentage = () => {
     if (!dungeon.passPercentage) {
       return <></>;
     }
     return (
       <DungonMod
+        onMouseOver={() => SetHoverModText('Pass Percentage')}
+        onMouseOut={ClearHoverModText}
         alt='Pass Percentage'
         type='percentage'
         text={`${Math.round(dungeon.passPercentage * 100)}%`}
@@ -75,6 +96,8 @@ export const DungeonSelector = ({
     return (
       <DungonMod
         alt='Timelimit Per Question'
+        onMouseOver={() => SetHoverModText('Timelimit Per Question')}
+        onMouseOut={ClearHoverModText}
         type='timer'
         text={`${dungeon.timePerQuestion}s`}
       />
@@ -159,21 +182,39 @@ export const DungeonSelector = ({
     );
   };
 
+  const ShowModText = () => {
+    const isVisible = modText && modText.length > 0;
+    return (
+      <h4
+        className={clsxm([
+          isVisible && 'w-full rounded-lg bg-gray-100 px-4 py-1 text-text',
+          !isVisible && 'bg-transparent',
+        ])}
+      >
+        {isVisible ? modText : <span>&nbsp;</span>}
+      </h4>
+    );
+  };
+
   return (
     <div className='group w-1/3'>
       <button
-        className='m-2 rounded-b-md bg-background-secondary group-hover:bg-accent-100'
+        className='m-2 flex flex-col items-center rounded-b-md bg-background-secondary group-hover:bg-accent-100'
         onClick={clickedDungeon}
       >
-        <div className='rounded-t-md bg-accent-100 p-4 text-center group-hover:bg-accent-200'>
+        <div className='w-full rounded-t-md bg-accent-100 p-4 text-center group-hover:bg-accent-200'>
           <h2>{dungeon.name}</h2>
         </div>
         <div className='flex flex-col gap-4 p-4'>
           <div className='flex flex-row items-center gap-2'>
-            <ShowNumberQuestions />
             <ShowDomains />
           </div>
           <ShowDungeonMods />
+          <ShowModText />
+
+          <div className='text-center'>
+            <ShowNumberQuestions />
+          </div>
           <ShowSkulls />
         </div>
       </button>
